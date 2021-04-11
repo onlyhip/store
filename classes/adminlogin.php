@@ -35,7 +35,7 @@
                 
                 if($result != false){
                     $value = $result->fetch_assoc();
-                    Session::set('adminlogin',true);
+                    Session::set('login',true);
                     Session::set('adminId',$value['adminId']);
                     Session::set('adminUser',$value['adminUser']);
                     Session::set('adminName',$value['adminName']);
