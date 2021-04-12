@@ -1,6 +1,6 @@
 <?php
-	include 'inc/header.php';
-	include 'inc/slider.php';
+	include_once 'inc/header.php';
+	include_once 'inc/slider.php';
 ?>
 <div class="main">
     <div class="content">
