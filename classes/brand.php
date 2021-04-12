@@ -94,5 +94,11 @@
             }
         }
 
+        public function show_brand_home(){
+			$query = "SELECT * FROM tbl_brand order by brandId desc";
+			$result = $this->db->select($query);
+			return $result;
+		}
+
     }    
 ?>

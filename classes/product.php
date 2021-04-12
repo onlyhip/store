@@ -213,5 +213,90 @@ class Product
 		$result = $this->db->select($query);
 		return $result;
 	}
+
+	public function getLastestIphone(){
+		$query = "SELECT * FROM tbl_product WHERE brandId = '3' order by productId desc LIMIT 1";
+		$result = $this->db->select($query);
+		return $result;
+	}
+	public function getLastestOppo(){
+		$query = "SELECT * FROM tbl_product WHERE brandId = '6' order by productId desc LIMIT 1";
+		$result = $this->db->select($query);
+		return $result;
+	}
+	public function getLastestSamsung(){
+		$query = "SELECT * FROM tbl_product WHERE brandId = '5' order by productId desc LIMIT 1";
+		$result = $this->db->select($query);
+		return $result;
+	}
+	public function getLastestVivo(){
+		$query = "SELECT * FROM tbl_product WHERE brandId = '7' order by productId desc LIMIT 1";
+		$result = $this->db->select($query);
+		return $result;
+	}
+
+
+	public function show_slider(){
+		$query = "SELECT * FROM tbl_slider where type='1' order by sliderId desc";
+		$result = $this->db->select($query);
+		return $result;
+	}
+	public function show_slider_list(){
+		$query = "SELECT * FROM tbl_slider order by sliderId desc";
+		$result = $this->db->select($query);
+		return $result;
+	}
+	
+	public function update_type_slider($id,$type){
+
+		$type = mysqli_real_escape_string($this->db->link, $type);
+		$query = "UPDATE tbl_slider SET type = '$type' where sliderId='$id'";
+		$result = $this->db->update($query);
+		return $result;
+	}
+	public function del_slider($id){
+		$query = "DELETE FROM tbl_slider where sliderId = '$id'";
+		$result = $this->db->delete($query);
+		if($result){
+			$alert = "<span class='success'>Slider Deleted Successfully</span>";
+			return $alert;
+		}else{
+			$alert = "<span class='error'>Slider Deleted Not Success</span>";
+			return $alert;
+		}
+	}
+	public function insertWishlist($productid, $customer_id){
+		$productid = mysqli_real_escape_string($this->db->link, $productid);
+		$customer_id = mysqli_real_escape_string($this->db->link, $customer_id);
+		
+		$check_wlist = "SELECT * FROM tbl_wishlist WHERE productId = '$productid' AND customer_id ='$customer_id'";
+		$result_check_wlist = $this->db->select($check_wlist);
+
+		if($result_check_wlist){
+			$msg = "<span class='error'>Product Already Added to Wishlist</span>";
+			return $msg;
+		}else{
+
+		$query = "SELECT * FROM tbl_product WHERE productId = '$productid'";
+		$result = $this->db->select($query)->fetch_assoc();
+		
+		$productName = $result["productName"];
+		$price = $result["price"];
+		$image = $result["image"];
+
+		
+		
+		$query_insert = "INSERT INTO tbl_wishlist(productId,price,image,customer_id,productName) VALUES('$productid','$price','$image','$customer_id','$productName')";
+		$insert_wlist = $this->db->insert($query_insert);
+
+		if($insert_wlist){
+					$alert = "<span class='success'>Added to Wishlist Successfully</span>";
+					return $alert;
+				}else{
+					$alert = "<span class='error'>Added to Wishlist Not Success</span>";
+					return $alert;
+				}
+		}
+	}
 }
 ?>

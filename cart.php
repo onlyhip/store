@@ -81,9 +81,14 @@ if (!isset($_GET['id'])) {
 				$check_cart = $ct->check_cart();
 				if ($check_cart) {
 				?>
-					<table style="float:right;text-align:left;" width="40%">
+					<table class="tblone" >
 						<tr>
-							<th>Sub Total : </th>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Sub Total : </td>
+							
 							<td><?php
 								echo $fm->format_currency($subtotal) . " " . "VNĐ";
 								Session::set('sum', $subtotal);
@@ -91,11 +96,11 @@ if (!isset($_GET['id'])) {
 								?></td>
 						</tr>
 						<tr>
-							<th>VAT : </th>
+							<td>VAT : </td>
 							<td>10%</td>
 						</tr>
 						<tr>
-							<th>Grand Total :</th>
+							<td>Grand Total :</td>
 							<td><?php
 
 								$vat = $subtotal * 0.1;
@@ -116,7 +121,7 @@ if (!isset($_GET['id'])) {
 			$check_cart = $ct->check_cart();
 			if (Session::get('customer_id') == true && $check_cart) {
 			?>
-				<a href="payment.php"> Thanh toán</a>
+				<a class="muahang" style="text-align: right;" href="payment.php"> Thanh toán</a>
 
 		</div>
 	<?php

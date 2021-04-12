@@ -17,6 +17,7 @@
 	$br = new brand();
 	$cat = new category();
 	$us = new user();
+	$cs = new customer();
 	$product = new product();
 		
 ?>
@@ -35,6 +36,7 @@
 	<title>Store Website</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
 	<script src="js/jquerymain.js"></script>
@@ -88,7 +90,22 @@
 					</div>
 				</div>
 				
-				<div class="login"><a href="login.php">Login</a></div>
+				<?php 
+				if(isset($_GET['customer_id'])){
+					$customer_id = $_GET['customer_id'];
+					$delCart = $ct->del_all_data_cart();
+					Session::destroy();
+				}
+				?>
+				<div class="login">
+				<?php
+				$login_check = Session::get('customer_login'); 
+				if($login_check==false){
+					echo '<a href="login.php">Đăng nhập</a></div>';
+				}else{
+					echo '<a href="?customer_id='.Session::get('customer_id').'">Đăng xuất</a></div>';
+				}
+				?>
 				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
@@ -98,7 +115,36 @@
 				<li><a href="index.php">Home</a></li>
 				<li><a href="products.php">Products</a> </li>
 				<li><a href="topbrands.php">Top Brands</a></li>
-				<li><a href="cart.php">Cart</a></li>
+
+				<?php
+					$check_cart = $ct->check_cart();
+					if($check_cart == true){
+						echo '<li><a href="cart.php">Cart</a></li>';
+					}else{
+						echo '';
+					}
+				?>
+				<?php
+					$customer_id = Session::get('customer_id');
+					$check_order = $ct->check_order($customer_id);
+					if($check_order == true){
+						echo '<li><a href="orderdetails.php">Ordered</a></li>';
+					}else{
+						echo '';
+					}
+				?>
+
+				<?php
+					$login_check = Session::get('customer_login');
+					if($login_check == true){
+						echo '<li><a href="profile.php">Profile</a></li>';
+					}else{
+						echo '';
+					}
+				?>
+				
+				
+
 				<li><a href="contact.php">Contact</a> </li>
 				<div class="clear"></div>
 			</ul>
