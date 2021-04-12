@@ -38,17 +38,17 @@ class Product
 		$uploaded_image = "uploads/" . $unique_image;
 
 		if ($productName == "" || $brand == "" || $category == "" || $description == "" || $price == "" || $type == "" || $file_name == "") {
-			$alert = "<span class='error'>Fields must be not empty</span>";
+			$alert = "<span class='error'>Mời nhập thông tin đầy đủ cho các trường dữ liệu</span>";
 			return $alert;
 		} else {
 			move_uploaded_file($file_temp, $uploaded_image);
 			$query = "INSERT INTO tbl_product(productName,catId,brandId,description,type,price,image) VALUES('$productName','$category','$brand','$description','$type','$price','$unique_image')";
 			$result = $this->db->insert($query);
 			if ($result) {
-				$alert = "<span class='success'>Insert Product Successfully</span>";
+				$alert = "<span class='success'>Thêm sản phẩm thành công</span>";
 				return $alert;
 			} else {
-				$alert = "<span class='error'>Insert Product Not Success</span>";
+				$alert = "<span class='error'>Thêm sản phẩm thành công</span>";
 				return $alert;
 			}
 		}
@@ -106,7 +106,7 @@ class Product
 
 
 		if ($productName == "" || $brand == "" || $category == "" || $description == "" || $price == "" || $type == "") {
-			$alert = "<span class='error'>Fields must be not empty</span>";
+			$alert = "<span class='error'>Mời nhập thông tin đầy đủ cho các trường dữ liệu</span>";
 			return $alert;
 		} else {
 			if (!empty($file_name)) {
@@ -146,10 +146,10 @@ class Product
 			}
 			$result = $this->db->update($query);
 			if ($result) {
-				$alert = "<span class='success'>Product Updated Successfully</span>";
+				$alert = "<span class='success'>Cập nhật sản phẩm thành công</span>";
 				return $alert;
 			} else {
-				$alert = "<span class='error'>Product Updated Not Success</span>";
+				$alert = "<span class='error'>Cập nhật sản phẩm không thành công</span>";
 				return $alert;
 			}
 		}
@@ -161,10 +161,10 @@ class Product
 		$query = "DELETE FROM tbl_product where productId = '$id'";
 		$result = $this->db->delete($query);
 		if ($result) {
-			$alert = "<span class='success'>Product Deleted Successfully</span>";
+			$alert = "<span class='success'>Xóa sản phẩm thành công</span>";
 			return $alert;
 		} else {
-			$alert = "<span class='error'>Product Deleted Not Success</span>";
+			$alert = "<span class='error'>Xóa sản phẩm không thành công</span>";
 			return $alert;
 		}
 	}

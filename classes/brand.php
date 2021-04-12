@@ -25,16 +25,16 @@
 
 
             if(empty($brandName)){
-                $alert = "<span class='error'>Brand must be not empty</span>";
+                $alert = "<span class='error'>Tên thương hiệu không được trống</span>";
                 return $alert;
             }else{
                 $query = "INSERT INTO tbl_brand(brandName) VALUES('$brandName')";
                 $result = $this->db->insert($query);
                 if($result){
-                    $alert = "<span class='success'>Insert Brand Successfully</span>";
+                    $alert = "<span class='success'>Thêm thương hiệu thành công</span>";
                     return $alert;
                 }else{
-                    $alert = "<span class='error'>Insert Brand Not Success</span>";
+                    $alert = "<span class='error'>Thêm thương hiệu không thành công</span>";
                     return $alert;       
                 }
               
@@ -64,16 +64,16 @@
 
 
             if(empty($brandName)){
-                $alert = "<span class='error'>Brand must be not empty</span>";
+                $alert = "<span class='error'>Tên thương hiệu không được trống</span>";
                 return $alert;
             }else{
                 $query = "UPDATE tbl_brand SET brandName = '$brandName' WHERE brandId = '$id'";
                 $result = $this->db->update($query);
                 if($result){
-                    $alert = "<span class='success'>Update Brand Successfully</span>";
+                    $alert = "<span class='success'>Cập nhật thương hiệu thành công</span>";
                     return $alert;
                 }else{
-                    $alert = "<span class='error'>Update Brand Not Success</span>";
+                    $alert = "<span class='error'>Cập nhật thương hiệu thành công</span>";
                     return $alert;       
                 }
               
@@ -86,10 +86,10 @@
             $result = $this->db->delete($query);
 
             if($result){
-                $alert = "<span class='success'>Delete Brand Successfully</span>";
+                $alert = "<span class='success'>Xóa thương hiệu thành công</span>";
                 return $alert;
             }else{
-                $alert = "<span class='error'>Delete Brand Not Success</span>";
+                $alert = "<span class='error'>Xóa thương hiệu không thành công</span>";
                 return $alert;       
             }
         }

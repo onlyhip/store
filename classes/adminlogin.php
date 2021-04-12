@@ -28,7 +28,7 @@
             $adminPass = mysqli_real_escape_string($this->db->link,$adminPass);
             
             if(empty($adminUser) || empty($adminPass)){
-                $alert = "User and Password are not empty";
+                $alert = "Tên đăng nhập và mật khẩu không được trống";
                 return $alert;
             }else{
                 $query = "SELECT * FROM tbl_admin WHERE adminUser = '$adminUser' AND adminPass = '$adminPass' LIMIT 1 ";
@@ -42,7 +42,7 @@
                     Session::set('adminName',$value['adminName']);
                     header('Location:index.php');
                 }else{
-                    $alert = "User and Password not match";
+                    $alert = "Tên đăng nhập và mật khẩu không trùng khớp";
                     return $alert;
                 }
             }

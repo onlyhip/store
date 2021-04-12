@@ -11,8 +11,8 @@
 	});
 		
 
-	$db = new Database();
-	$fm = new Format();
+	$db = new database();
+	$fm = new format();
 	$ct = new cart();
 	$br = new brand();
 	$cat = new category();
@@ -69,12 +69,25 @@
 				</div>
 				<div class="shopping_cart">
 					<div class="cart">
-						<a href="#" title="View my shopping cart" rel="nofollow">
+						<a href="cart.php?id=live" title="View my shopping cart" rel="nofollow">
 							<span class="cart_title">Cart</span>
-							<span class="no_product">(empty)</span>
+							<span class="no_product">
+								<?php
+									$check_cart = $ct->check_cart();
+										if($check_cart){
+											$sum = Session::get("sum");
+											$qty = Session::get("qty");
+											echo "(" .$qty. ")";;
+											}else{
+											echo '(0)';
+										}
+
+								?>
+							</span>
 						</a>
 					</div>
 				</div>
+				
 				<div class="login"><a href="login.php">Login</a></div>
 				<div class="clear"></div>
 			</div>
