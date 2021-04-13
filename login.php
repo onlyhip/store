@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 			<h3>Existing Customers</h3>
 			
 			<form action="" method="post">
-				<input type="text" name="email" class="field" placeholder="Enter Email....">
-				<input type="password" name="password" class="field" placeholder="Enter Password....">
+				<input class="form-control" type="text" name="email" class="field" placeholder="Enter Email....">
+				<input class="form-control" type="password" name="password" class="field" placeholder="Enter Password....">
 				<div class="buttons-input">
 					<div><input class="btn btn-success" type="submit" name="login" class="grey" value="Sign In"></div>
 				</div>
@@ -49,36 +49,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 						<tr>
 							<td>
 								<div>
-									<input type="text" name="name" placeholder="Enter Name...">
+									<input class="form-control" type="text" name="name" placeholder="Enter Name...">
 								</div>
 
 								<div>
-									<input type="text" name="city" placeholder="Enter City...">
+									<input class="form-control" type="text" name="city" placeholder="Enter City...">
 								</div>
 
 								<div>
-									<input type="text" name="address" placeholder="Enter Address...">
+									<input class="form-control" type="text" name="address" placeholder="Enter Address...">
 								</div>
 							
 
 							</td>
 							<td>
 								<div>
-									<input type="text" name="email" placeholder="Enter Email...">
+									<input class="form-control" type="text" name="email" placeholder="Enter Email...">
 
 								</div>
 								<div>
-									<input type="text" name="phone" placeholder="Enter Phone...">
+									<input class="form-control" type="text" name="phone" placeholder="Enter Phone...">
 								</div>
 
 								<div>
-									<input type="password" name="password" placeholder="Enter Password...">
+									<input class="form-control" type="password" name="password" placeholder="Enter Password...">
 								</div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<div class="search">
+				<div>
 					<div><input class="btn btn-primary" type="submit" name="submit" class="grey" value="Create Account"></div>
 				</div>
 				<div class="clear"></div>

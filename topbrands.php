@@ -1,15 +1,14 @@
 <?php 
 	include 'inc/header.php';
-	// include 'inc/slider.php';
 ?>
-<!-- <?php
-	if(!isset($_GET['brandId']) || $_GET['brandId']==NULL){
+<?php
+	if(!isset($_GET['brandid']) || $_GET['brandid']==NULL){
        echo "<script>window.location ='404.php'</script>";
     }else{
         $id = $_GET['brandid']; 
     }
    
-?> -->
+?> 
  <div class="main">
     <div class="content">
     	<?php
@@ -42,7 +41,7 @@
 				<div class="grid_1_of_4 images_1_of_4">
 					 <a href="details.php?proid=<?php echo $result['productId'] ?>"><img src="admin/uploads/<?php echo $result['image'] ?>" width="200px" alt="" /></a>
 					 <h2><?php echo $result['productName'] ?></h2>
-					 <p><?php echo $fm->textShorten($result['product_desc'],50); ?></p>
+					 <p><?php echo $fm->textShorten($result['description'],20); ?></p>
 					 <p><span class="price"><?php echo $fm->format_currency($result['price'])." "."VNĐ" ?></span></p>
 				     <div class="button"><span><a href="details.php?proid=<?php echo $result['productId'] ?>" class="details">Chi tiết</a></span></div>
 				</div>
