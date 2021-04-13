@@ -159,6 +159,7 @@
 				return $msg;
 			}
 		}
+		
 		public function del_shifted($id,$time,$price){
 			$id = mysqli_real_escape_string($this->db->link, $id);
 			$time = mysqli_real_escape_string($this->db->link, $time);

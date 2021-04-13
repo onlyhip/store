@@ -22,7 +22,7 @@
 <body>
 <div class="container">
 	<section id="content">
-		<form action="login.php" method="post">
+		<form action="login.php" class="form" method="post">
 			<h1>Admin Login</h1>
 			<span>
 				<?php
@@ -42,9 +42,7 @@
 				<input type="submit" value="Log in" />
 			</div>
 		</form><!-- form -->
-		<div class="button">
-			<a href="#">My website store PHP</a>
-		</div><!-- button -->
+		
 	</section><!-- content -->
 </div><!-- container -->
 </body>

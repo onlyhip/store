@@ -1,41 +1,85 @@
-<?php include 'inc/header.php';?>
-<?php include 'inc/sidebar.php';?>
+<?php include 'inc/header.php'; ?>
+<?php include 'inc/sidebar.php'; ?>
+<?php include '../classes/product.php'; ?>
+<?php
+$product = new product();
+if (isset($_GET['type_slider']) && isset($_GET['type'])) {
+	$id = $_GET['type_slider'];
+	$type = $_GET['type'];
+	$update_type_slider = $product->update_type_slider($id, $type);
+}
+if (isset($_GET['slider_del'])) {
+	$id = $_GET['slider_del'];
+	$del_slider = $product->del_slider($id);
+}
+?>
 <div class="grid_10">
-    <div class="box round first grid">
-        <h2>Slider List</h2>
-        <div class="block">  
-            <table class="data display datatable" id="example">
-			<thead>
-				<tr>
-					<th>No.</th>
-					<th>Slider Title</th>
-					<th>Slider Image</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
+	<div class="box round first grid">
+		<h2>Slider List</h2>
+		<div class="block">
+			<?php 
+			if(isset($del_slider)){
+				echo $del_slider;
+			}
+			?>
+			<table class="data display datatable" id="example">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Slider Title</th>
+						<th>Slider Image</th>
+						<th>Type</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$product = new product();
+					$get_slider = $product->show_slider();
+					if ($get_slider) {
+						$i = 0;
+						while ($result_slider = $get_slider->fetch_assoc()) {
+							$i++;
+					?>
+							<tr class="odd gradeX">
+								<td><?php echo $i; ?></td>
+								<td><?php echo $result_slider['sliderName'] ?></td>
+								<td><img src="uploads/<?php echo $result_slider['sliderImage'] ?>" height="120px" width="350px" /></td>
+								<td>
+									<?php
+									if ($result_slider['type'] = 1) {
+									?>
+										<a href="?type_slider=<?php echo $result_slider['sliderId'] ?>&type =0">Off</a>
 
-				<tr class="odd gradeX">
-					<td>01</td>
-					<td>Title of Slider</td>
-					<td><img src="" height="40px" width="60px"/></td>				
-				<td>
-					<a href="">Edit</a> || 
-					<a onclick="return confirm('Are you sure to Delete!');" >Delete</a> 
-				</td>
-					</tr>	
-			</tbody>
-		</table>
+									<?php
+									} else {
+									?>
+										<a href="?type_slider=<?php echo $result_slider['sliderId'] ?>&type=1">On</a>
+									<?php
+									}
+									?>
+								</td>
+								<td>
 
-       </div>
-    </div>
+									<a href="?slider_del=<?php echo $result_slider['sliderId'] ?>" onclick="return confirm('Are you sure to Delete!');">Delete</a>
+								</td>
+							</tr>
+					<?php
+						}
+					}
+					?>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        setupLeftMenu();
-        $('.datatable').dataTable();
+	$(document).ready(function() {
+		setupLeftMenu();
+		$('.datatable').dataTable();
 		setSidebarHeight();
-    });
+	});
 </script>
-<?php include 'inc/footer.php';?>
+<?php include 'inc/footer.php'; ?>

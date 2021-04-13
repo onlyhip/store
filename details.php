@@ -11,9 +11,8 @@ if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
 $customer_id = Session::get('customer_id');
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
 
-    $productid = $_POST['productid'];
-    $insertWishlist = $product->insertWishlist($productid, $customer_id);
-
+	$productid = $_POST['productid'];
+	$insertWishlist = $product->insertWishlist($productid, $customer_id);
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 
@@ -58,34 +57,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 								?>
 							</div>
 							<div class="add-cart">
-								<div class="button_details">	
+								<div class="button_details">
+
 									<form action="" method="POST">
-
 										<input type="hidden" name="productid" value="<?php echo $result_details['productId'] ?>" />
-
-
-	
-
+										<?php
+										$login_check = Session::get('customer_login');
+										if ($login_check) {
+											echo '<input type="submit" class="buysubmit" name="wishlist" value="Thêm vào yêu thích"><br>';
+										} else {
+											echo '';
+										}
+										?>
+										<?php
+										if (isset($insertWishlist)) {
+											echo $insertWishlist;
+										}
+										?>
 									</form>
 								</div>
 								<div class="clear"></div>
-								<p>
-									<?php
-									if (isset($insertCompare)) {
-										echo $insertCompare;
-									}
-									?>
-									<?php
-									if (isset($insertWishlist)) {
-										echo $insertWishlist;
-									}
-									?>
-
-
-								</p>
-
 							</div>
-
 						</div>
 						<div class="product-desc">
 							<h2>Nội dung sản phẩm</h2>

@@ -13,7 +13,7 @@
 						<div class="text list_2_of_1">
 							<h2>IPHONE</h2>
 							<p><?php echo $resultIphone['productName'] ?></p>
-							<div class="button"><span><a href="details.php?proid=<?php echo $resultIphone['productId'];?>">Chi tiết</a></span></div>
+							<div class="button"><span><a href="details.php?proid=<?php echo $resultIphone['productId']; ?>">Chi tiết</a></span></div>
 						</div>
 					</div>
 			<?php
@@ -32,7 +32,7 @@
 						<div class="text list_2_of_1">
 							<h2>Samsung</h2>
 							<p><?php echo $resultss['productName'] ?></p>
-							<div class="button"><span><a href="details.php?proid=<?php echo $resultss['productId'];?>">Chi tiết</a></span></div>
+							<div class="button"><span><a href="details.php?proid=<?php echo $resultss['productId']; ?>">Chi tiết</a></span></div>
 						</div>
 					</div>
 			<?php
@@ -41,7 +41,7 @@
 			?>
 		</div>
 		<div class="section group">
-		<?php
+			<?php
 			$getLastestOp = $product->getLastestOppo();
 			if ($getLastestOp) {
 				while ($resultOp = $getLastestOp->fetch_assoc()) {
@@ -53,7 +53,7 @@
 						<div class="text list_2_of_1">
 							<h2>Oppo</h2>
 							<p><?php echo $resultOp['productName'] ?></p>
-							<div class="button"><span><a href="details.php?proid=<?php echo $resultOp['productId'];?>">Chi tiết</a></span></div>
+							<div class="button"><span><a href="details.php?proid=<?php echo $resultOp['productId']; ?>">Chi tiết</a></span></div>
 						</div>
 					</div>
 			<?php
@@ -72,7 +72,7 @@
 						<div class="text list_2_of_1">
 							<h2>Vivo</h2>
 							<p><?php echo $resultVv['productName'] ?></p>
-							<div class="button"><span><a href="details.php?proid=<?php echo $resultVv['productId'];?>">Chi tiết</a></span></div>
+							<div class="button"><span><a href="details.php?proid=<?php echo $resultVv['productId']; ?>">Chi tiết</a></span></div>
 						</div>
 					</div>
 			<?php
@@ -84,7 +84,26 @@
 	</div>
 	<div class="header_bottom_right_images">
 		<!-- FlexSlider -->
+		<section class="slider">
+			<div class="flexslider">
+				<ul class="slides">
+					<?php
+					$get_slider = $product->show_slider();
+					if ($get_slider) {
+						while ($result_slider = $get_slider->fetch_assoc()) {
 
+
+					?>
+							<li>
+								<img src="admin/uploads/<?php echo $result_slider['sliderImage'] ?> " alt="<?php echo $result_slider['sliderName'] ?>">
+							</li>
+					<?php
+						}
+					}
+					?>
+				</ul>
+			</div>
+		</section>
 		<!-- FlexSlider -->
 	</div>
 	<div class="clear"></div>

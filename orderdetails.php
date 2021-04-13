@@ -10,8 +10,10 @@ if ($login_check == false) {
 }
 
 
+
 ?>
 <?php
+$ct = new cart();
 if (isset($_GET['confirmid'])) {
     $id = $_GET['confirmid'];
     $time = $_GET['time'];
@@ -33,8 +35,8 @@ if (isset($_GET['confirmid'])) {
                         <th width="15%">Quantity</th>
                         <th width="10%">Date</th>
                         <th width="10%">Status</th>
-
                         <th width="10%">Action</th>
+                     
                     </tr>
                     <?php
                     $customer_id = Session::get('customer_id');
@@ -62,38 +64,38 @@ if (isset($_GET['confirmid'])) {
                                 <td><?php echo $fm->formatDate($result['date_order']) ?></td>
                                 <td>
                                     <?php
-                                    if ($result['status'] == '0') {
-                                        echo 'Pending';
-                                    } elseif ($result['status'] == 1) {
+                                    if($result['status']=='0'){
+                                    echo 'Pending';
+                                    }elseif($result['status']==1){ 
                                     ?>
-                                        <span>Shifted</span>
-
-                                    <?php
-                                    } elseif ($result['status'] == 2) {
-                                        echo 'Received';
-                                    }
+                                    <span>Shifted</span>
+                                
+                                      <?php
+                                     }elseif($result['status']==2){
+                                      echo 'Received';
+                                }
 
                                     ?>
 
 
                                 </td>
                                 <?php
-                                if ($result['status'] == '0') {
-                                ?>
-                                    <td><?php echo 'N/A'; ?></td>
-                                <?php
-
-                                } elseif ($result['status'] == '1') {
-
-                                ?>
+								if($result['status']=='0'){
+                                    ?>
+                                    <td><?php echo 'N/A';?></td>
+                                    <?php
+                                    
+                                    }elseif($result['status']=='1'){
+                                    
+                                    ?>
                                     <td><a href="?confirmid=<?php echo $customer_id ?>&price=<?php echo $result['price'] ?>&time=<?php echo $result['date_order'] ?>">Confirmed</a></td>
-                                <?php
-                                } else {
-                                ?>
+                                    <?php
+                                }else{
+                                    ?>
                                     <td><?php echo 'Received'; ?></td>
-                                <?php
-                                }
-                                ?>
+                                    <?php
+                                    }	
+								?>
                             </tr>
                     <?php
 
