@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 						</div>
 						<div class="desc span_3_of_2">
 							<h2><?php echo $result_details['productName'] ?></h2>
-							<p><?php echo $fm->textShorten($result_details['description'], 150) ?></p>
+							<p><?php echo $fm->textShorten($result_details['description'], 20) ?></p>
 							<div class="price">
 								<p>Price: <span><?php echo $fm->format_currency($result_details['price']) . " " . "VNĐ" ?></span></p>
 								<p>Category: <span><?php echo $result_details['catName'] ?></span></p>

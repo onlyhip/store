@@ -68,25 +68,25 @@ header("Cache-Control: max-age=2592000");
 				<div class="search_box">
 					<form action="search.php" method="post">
 						<input type="text" value="" placeholder="Tìm kiếm sản phẩm.." name="tukhoa">
-						<input type="submit" name="search_product" value="Tìm Kiếm">
+						<input type="submit" name="search_product" value="Tìm kiếm">
 					</form>
 				</div>
 				<div class="shopping_cart">
 					<div class="cart">
 						<a href="cart.php?id=live" title="View my shopping cart" rel="nofollow">
-							<span class="cart_title">Cart</span>
+							<span class="cart_title">Giỏ hàng</span>
 							<span class="no_product">
-								<?php
+								<!-- <?php
 								$check_cart = $ct->check_cart();
 								if ($check_cart) {
 									$sum = Session::get("sum");
 									$qty = Session::get("qty");
-									echo "(" . $qty . ")";;
+									echo "(" . $qty . ")";
 								} else {
 									echo '(0)';
 								}
 
-								?>
+								?> -->
 							</span>
 						</a>
 					</div>
@@ -175,14 +175,6 @@ header("Cache-Control: max-age=2592000");
 						}else{
 							echo '<li><a href="profile.php">Tài khoản</a> </li>';
 						}
-						?>
-						<?php
-					
-							$login_check = Session::get('customer_login'); 
-							if($login_check){
-								echo '<li><a href="compare.php">So sánh</a> </li>';
-							}
-								
 						?>
 						<?php
 					

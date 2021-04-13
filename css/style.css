@@ -55,7 +55,7 @@ body{
 }
 .search_box input[type="text"]{
 	width:74%;
-	padding:9px 8px;
+	padding:8px 8px;
 	outline:none;
 	border:none;
 	background:none;
@@ -2561,4 +2561,9 @@ p.success_note {
     text-align: center;
     padding: 8px;
     font-size: 17px;
+}
+
+
+.cart-custom{
+	float: left;
 }
